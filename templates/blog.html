@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!--wrapper start-->
+<div class="wrapper">
+
+
+
+  <main class="main-content">
+    <!--== Start Page Header Area Wrapper ==-->
+    <div class="page-header-area">
+      <div class="container pt--0 pb--0">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-header-content">
+              <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+                <ul class="breadcrumb">
+                  <li><a href="/" style="color: black;">ГЛАВНАЯ</a></li>
+                  <li class="breadcrumb-sep">//</li>
+                  <li>Новые продукты</li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--== End Page Header Area Wrapper ==-->
+
+    <!--== Start Blog Area Wrapper ==-->
+    <section class="blog-area blog-inner-area">
+      <div class="container">
+        <div class="row">
+          {% for i in blognew %}
+          <div class="col-md-6 col-lg-4">
+            <!--== Start Blog Item ==-->
+            <div class="post-item">
+              <div class="inner-content">
+                <div class="thumb">
+                  <a href="#"><img src="{{i.img.url}}" width="370" height="260" alt="Image-HasTech"></a>
+                </div>
+                <div class="content">
+                  <div class="meta-post">
+                    <ul>
+                      <li class="post-date"><i class="fa fa-calendar"></i><a href="blog.html">{{i.sana}}</a></li>
+                    </ul>
+                  </div>
+                  <h4 class="title"><a href="#">{{i.title}}</a></h4>
+                </div>
+              </div>
+            </div>
+            <!--== End Blog Item ==-->
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+  </main>
+
+</div>
+{% endblock %}

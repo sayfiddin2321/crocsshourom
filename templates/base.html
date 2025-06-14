@@ -1,0 +1,677 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shome - Shoes eCommerce Website Template" />
+  <meta name="keywords" content="footwear, shoes, modern, shop, store, ecommerce, responsive, e-commerce" />
+  <meta name="author" content="codecarnival" />
+
+  <title>crocs ru</title>
+
+  <!--== Favicon ==-->
+
+  <!--== Google Fonts ==-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!--== Bootstrap CSS ==-->
+  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <!--== Font Awesome Min Icon CSS ==-->
+  <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!--== Pe7 Stroke Icon CSS ==-->
+  <link href="{% static 'assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+  <!--== Swiper CSS ==-->
+  <link href="{% static 'assets/css/swiper.min.css' %}" rel="stylesheet" />
+  <!--== Fancybox Min CSS ==-->
+  <link href="{% static 'assets/css/fancybox.min.css' %}" rel="stylesheet" />
+  <!--== Aos Min CSS ==-->
+  <link href="{% static 'assets/css/aos.min.css' %}" rel="stylesheet" />
+
+  <!--== Main Style CSS ==-->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+  <style>
+    .crocs-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .crocs-cards>.card {
+      background: linear-gradient(135deg, #FFD6D6, #FFE6B3, #CFFFD7, #D6E0FF);
+      /* gradient fonda */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      width: 220px;
+      text-align: center;
+      padding: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px !important;
+      border-radius: 8px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card h1 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .card span {
+      display: block;
+      font-weight: bold;
+      color: #2a9d8f;
+      margin-bottom: 12px;
+    }
+
+    .card button {
+      background: black;
+      border: none;
+      color: #fff;
+      padding: 15px 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      .crocs-cards {
+        margin: 20px;
+        justify-content: center;
+      }
+
+      .crocs-cards>.card {
+        width: calc(50% - 10px);
+      }
+
+      .card>img {
+        height: auto !important;
+      }
+
+      .card>a {
+        font-size: 0.4rem;
+      }
+
+      .card button {
+        font-size: 0.6rem;
+        padding: 8px 20px !important;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+
+  <header class="main-header-wrapper position-relative">
+    <div class="header-top">
+      <div class="container pt--0 pb--0">
+        <div class="row">
+          <div class="col-12">
+            <div class="header-top-align">
+              <div class="header-top-align-start">
+                <div class="desc">
+                  <p>Сайт не является официальным. Официальный сайт crocs-shourom.ru</p>
+                </div>
+              </div>
+              <div class="header-top-align-end">
+                <div class="header-info-items">
+                  <div class="info-items">
+                    <ul>
+                      <li class="number" style="color: white;"><i class="fa fa-phone"></i><a href="tel://0123456789"
+                          style="color: white;">+998 88 991 15 11</a>
+                      </li>
+                      <li class="email"><i class="fa fa-envelope"></i><a href="mailto://crocs ru@example.com"
+                          style="color: white;">crocs-shourom@info.ru</a></li>
+                      <!-- <li class="account"><i class="fa fa-user"></i><a href="account-login.html"
+                          style="color: white;">Профил</a></li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-middle" style="background-color: white;">
+      <div class="container pt--0 pb--0">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <div class="header-middle-align">
+              <div class="header-middle-align-start">
+                <div class="header-logo-area">
+                  <a href="index.html">
+                    <!-- <img class="logo-main" src="{% static 'assets/img/logo.webp' %}" width="131" height="34" alt="Logo" /> -->
+                    <img class="logo-light" src="{% static 'assets/img/logo-light.webp' %}" width="131" height="34"
+                      alt="Logo" />
+                  </a>
+                </div>
+              </div>
+
+              <div class="header-middle-align-center">
+                <div class="header-search-area">
+                  <ul class="main-menu nav" style="gap: 20px;">
+                    <a href="/about_us/">
+                      <li class="o2">О нас</li>
+                    </a>
+                    <a href="/oтзывы/">
+                      <li class="o2">Отзывы</li>
+                    </a>
+                    <a href="/oбразы/">
+                      <li class="o2">Образы</li>
+                    </a>
+                    <a href="/звезды/">
+                      <li class="o2">Звезды</li>
+                    </a>
+                    <a href="/dostavka/">
+                      <li class="o2">Доставка</li>
+                    </a>
+                    <a href="/возврат/">
+                      <li class="o2">Гарантии и возврат</li>
+                    </a>
+                    <a href="/contact2/">
+                      <li class="o2">Контакты</li>
+                    </a>
+                    <style>
+                      .o2 {
+                        color: white !important;
+                      }
+                    </style>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="header-middle-align-end">
+                <div class="header-action-area">
+                  <!-- <div class="shopping-search">
+                    <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
+                      data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
+                        class="pe-7s-search icon" style="color:  white !important;"></i></button>
+                  </div> -->
+
+                  <div class="shopping-cart">
+                    <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas"
+                      data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
+                      <i class="pe-7s-shopbag icon" style="color: white !important;"></i>
+                      <sup class="shop-count">02</sup>
+                    </button>
+                    </button>
+                  </div>
+                  <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
+                    aria-controls="AsideOffcanvasMenu" style="color:  white !important;">
+                    <i class="pe-7s-menu"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-area header-default">
+      <div class="container">
+        <div class="row no-gutter align-items-center position-relative">
+          <div class="col-12">
+
+            <div class="header-align" style="background-color: white !important; color: black !important;">
+              <div class="header-navigation-area position-relative">
+                <ul class="main-menu nav">
+                  {% for i in categories %}
+                  <li><a href="/categories/{{i.id}}/" style="color: black;"><span>{{i.name}}</span></a>
+                  </li>
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background-color: black !important;">
+      <div class="header-area header-default">
+        <div class="container">
+          <div class="row no-gutter align-items-center position-relative">
+            <div class="col-12">
+              <div class="header-align" style="background-color: black; border-radius: 0px !important;">
+                <div class="header-navigation-area position-relative">
+                  <ul class="main-menu nav" style="gap: 70px; padding: 20px;">
+                    <li>
+                      <p style="color: white;">
+                        <i class="fas fa-tshirt" style="margin-right: 8px;"></i>
+                        Доставка до 3-х моделей на примерку
+                      </p>
+                    </li>
+                    <li>
+                      <p style="color: white;">
+                        <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                        Доставка по Москве в течение 2 часов
+                      </p>
+                    </li>
+                    <li>
+                      <p style="color: white;">
+                        <i class="fas fa-truck" style="margin-right: 8px;"></i>
+                        Доставка в регионы от 2 дней
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Offcanvas aside - Telefon versiyasi uchun -->
+  {% block content %}
+  {% endblock %}
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>РАЗДЕЛЫ</h3>
+        <ul>
+          {% for i in categories %}
+          <li><a href="/categories/{{i.id}}/" style="color: rgb(255, 249, 249);"><span>{{i.name}}</span></a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>МОДЕЛИ</h3>
+        <ul>
+          <li>Crocs Baya</li>
+          <li>Crocs Bayaband</li>
+          <li>Crocs Bistro</li>
+          <li>Crocs Classic</li>
+          <li>Crocs Crocband</li>
+          <li>Crocs Duet Sport</li>
+          <li>Crocs LiteRide</li>
+          <li>Crocs Off Court</li>
+          <li>Crocs Platform</li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>ИНФОРМАЦИЯ</h3>
+        <ul>
+          <a href="/about_us/">
+            <li class="o2">О нас</li>
+          </a>
+          <a href="/oбразы/">
+            <li class="o2">Образы</li>
+          </a>
+          <a href="/oтзывы/">
+            <li class="o2">Отзывы</li>
+          </a>
+          <li>FAQ</li>
+          <a href="/dostavka/">
+            <li class="o2">Доставка</li>
+          </a>
+          <a href="/возврат/">
+            <li class="o2">Гарантии и возврат</li>
+          </a>
+          <a href="/blog/">
+            <li>Блог</li>
+          </a>
+          <a href="/contact2/">
+            <li class="o2">Контакты</li>
+          </a>
+          <li>Пункты выдачи</li>
+          <li>Подарочный Сертификат</li>
+        </ul>
+      </div>
+      <div class="footer-column contact-info">
+        <p><strong>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"
+              style="vertical-align: middle; margin-right: 6px;">
+              <path
+                d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.61 22 2 13.39 2 3.5a1 1 0 011-1H6.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z" />
+            </svg>
+            Звоните
+          </strong></p>
+        <p class="phone">+7 (931) 107-18-09</p>
+
+        <p><strong>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"
+              style="vertical-align: middle; margin-right: 6px;">
+              <path
+                d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+            </svg>
+            Наш адрес:
+          </strong></p>
+        <p>г.Москва, ул. Малая Филевская, 30</p>
+      </div>
+      <!-- Footer payment icons - faqat mobil versiyada ko‘rinadi -->
+      <div class="mobile-payment-icons">
+        <h5 style="color: white !important;">Принимаем к оплате</h5>
+        <div>
+          <img src="{% static 'rasmlar/1.png' %}" alt="">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard">
+          <img src="{% static 'rasmlar/mir.png' %}" alt="">
+        </div>
+      </div>
+  </footer>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    .site-footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+      min-width: 180px;
+    }
+
+    .footer-column h3 {
+      font-size: 16px;
+      color: white !important;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .contact-info .phone {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      margin-top: 30px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 30px auto 0;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .payments img {
+      height: 28px;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+
+    /* Avval: yashirib qo‘yamiz */
+    .mobile-payment-icons {
+      display: none;
+    }
+
+    /* Mobil versiyada ko‘rsatamiz */
+    @media (max-width: 768px) {
+
+      .footer-column,
+      .contact-info {
+        display: none;
+      }
+
+      .mobile-payment-icons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .mobile-payment-icons img {
+        width: 50px;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  </style>
+
+
+  <!--== Start Quick View Menu ==-->
+  <aside class="product-quick-view-modal">
+    <div class="product-quick-view-inner">
+      <div class="product-quick-view-content">
+        <button type="button" class="btn-close">
+          <span class="close-icon"><i class="fa fa-close"></i></span>
+        </button>
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="thumb">
+              <img src="{% static 'assets/img/shop/product-single/1.webp' %}" width="570" height="541" alt="Alan-Shop">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="content">
+              <h4 class="title">Space X Bag For Office</h4>
+              <div class="prices">
+                <del class="price-old">$85.00</del>
+                <span class="price">$70.00</span>
+              </div>
+              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
+                professor at Hampden-Sydney College in Virginia,</p>
+              <div class="quick-view-select">
+                <div class="quick-view-select-item">
+                  <label for="forSize" class="form-label">Size:</label>
+                  <select class="form-select" id="forSize" required>
+                    <option selected value="">s</option>
+                    <option>m</option>
+                    <option>l</option>
+                    <option>xl</option>
+                  </select>
+                </div>
+                <div class="quick-view-select-item">
+                  <label for="forColor" class="form-label">Color:</label>
+                  <select class="form-select" id="forColor" required>
+                    <option selected value="">red</option>
+                    <option>green</option>
+                    <option>blue</option>
+                    <option>yellow</option>
+                    <option>white</option>
+                  </select>
+                </div>
+              </div>
+              <div class="action-top">
+                <div class="pro-qty">
+                  <input type="text" id="quantity20" title="Quantity" value="1" />
+                </div>
+                <button class="btn btn-black">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="canvas-overlay"></div>
+  </aside>
+  <!--== End Quick View Menu ==-->
+
+  <!--== Start Aside Cart Menu ==-->
+  <!-- <div class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart"
+    aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h1 id="offcanvasRightLabel"></h1>
+      <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Корзина <i
+          class="fa fa-chevron-right"></i></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="aside-cart-product-list">
+        <!-- {% for order in order %} -->
+        <!-- <li class="product-list-item" style="display: flex !important;">
+          <a href="/product/{{i.id}}/">
+            <a href="/product/{{i.id}}/"><img src="{{ order.product.img.url }}" width="90" height="110"
+                alt="Image-HasTech"></a>
+            <span class="product-title">{{order.product.title}}</span>
+          </a>
+          <span class="product-price">{{order.product.price}}</span>
+          <td>
+            <a href="#" class="remove-btn">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </td>
+        </li> -->
+
+      <!-- </ul>
+      {% endfor %} -->
+      <!-- <p class="cart-total"><span>Промежуточный итог:</span><span class="amount">£89.99</span></p>
+      <a class="btn-theme" data-margin-bottom="10" href="#">Просмотреть корзину</a>
+      <a class="btn-theme" href="#">Проверить</a> -->
+
+    <!-- </div>
+  </div>  -->
+  <!--== End Aside Cart Menu ==-->
+
+
+
+  <!--== Start Side Menu ==-->
+  <div class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h1 id="offcanvasExampleLabel"></h1>
+      <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">меню <i
+          class="fa fa-chevron-left"></i></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="info-items">
+        <ul>
+          <li class="number"><a href="#"><i class="fa fa-phone"></i>+998 88 991 15 11</a></li>
+          <li class="email"><a href="#"><i class="fa fa-envelope"></i>crocs-shourom@info.ru</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Mobile Menu Start -->
+      <div class="mobile-menu-items">
+        <ul class="nav-menu">
+
+          <li><a href="#">Типы</a>
+            <ul class="sub-menu">
+              {% for i in categories %}
+              <li><a href="/categories/{{i.id}}/" style="color: white;"><span>{{i.name}}</span></a>
+              </li>
+              {% endfor %}
+            </ul>
+            
+          </li>
+          <li><a href="#">Общая информация</a>
+            <ul class="sub-menu">
+              <li><a href="/about_us/">о нас</a></li>
+              <li><a href="/oтзывы/">Отзывы</a></li>
+              <li><a href="/oбразы/">Образы</a></li>
+              <li><a href="/звезды/">Звезды</a></li>
+              <li><a href="/dostavka/">Доставка</a></li>
+              <li><a href="/возврат/">Гарантии и возврат</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/contact2/">Контакт</a></li>
+        </ul>
+      </div>
+      <!-- Mobile Menu End -->
+    </div>
+  </div>
+  <!--== End Side Menu ==-->
+
+  </div>
+
+  <!--=== jQuery Modernizr Min Js ===-->
+  <script src="{% static 'assets/js/modernizr.js' %}"></script>
+  <!--=== jQuery Min Js ===-->
+  <script src="{% static 'assets/js/jquery-main.js' %}"></script>
+  <!--=== jQuery Migration Min Js ===-->
+  <script src="{% static 'assets/js/jquery-migrate.js' %}"></script>
+  <!--=== jQuery Popper Min Js ===-->
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <!--=== jQuery Bootstrap Min Js ===-->
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <!--=== jQuery Ui Min Js ===-->
+  <script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
+  <!--=== jQuery Swiper Min Js ===-->
+  <script src="{% static 'assets/js/swiper.min.js' %}"></script>
+  <!--=== jQuery Fancybox Min Js ===-->
+  <script src="{% static 'assets/js/fancybox.min.js' %}"></script>
+  <!--=== jQuery Waypoint Js ===-->
+  <script src="{% static 'assets/js/waypoint.js' %}"></script>
+  <!--=== jQuery Parallax Min Js ===-->
+  <script src="{% static 'assets/js/parallax.min.js' %}"></script>
+  <!--=== jQuery Aos Min Js ===-->
+  <script src="{% static 'assets/js/aos.min.js' %}"></script>
+  <!--=== jQuery Custom Js ===-->
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+  <script src="{% static 'assets/js/img.js' %}"></script>
+</body>
+
+</html>

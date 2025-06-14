@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!--== End Header Wrapper ==-->
+<!-- Offcanvas aside - Telefon versiyasi uchun -->
+<section class="about-section">
+  <div class="container">
+
+    <div class="about-content">
+      <div class="about-text">
+        <h1>{{vozvarat_2.title}}</h1>
+        <p>
+          {{vozvarat_2.text}}
+
+
+        </p>
+
+      </div>
+      <div class="about-image">
+        <img src="{{vozvarat_2.img.url}}" alt="Crocs haqida rasm" />
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 800x;
+    padding: 60px 10%;
+    background: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+
+  .about-text {
+    flex: 1 1 600px;
+  }
+
+  .about-text h1 {
+    font-size: 28px;
+    color: #222;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+
+  .about-text h1 span {
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 25px;
+    background: #fff;
+    padding: 15px 20px;
+    border-left: 4px solid red;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  .about-image {
+    flex: 1 1 300px;
+    text-align: center;
+  }
+
+
+
+  @media (max-width: 1024px) {
+    .about-content {
+      padding: 40px 5%;
+    }
+
+    .about-text h1 {
+      font-size: 24px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+    }
+
+    .about-text,
+    .about-image {
+      max-width: 100%;
+    }
+
+    .about-image img {
+      width: 100%;
+    }
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <!-- Offcanvas aside - Telefon versiyasi uchun -->
+      <div class="page-header-area">
+        <div class="container pt--0 pb--0">
+          <div class="row">
+            <div class="col-12">
+              <div class="page-header-content">
+                <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+                  <ul class="breadcrumb" style="gap: 15px !important;">
+                    <li><a href="/" style="color: black !important;">Главная</a></li>
+                    <li class="breadcrumb-sep"></li>
+                    <li>Куплено </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--== End Page Header Area Wrapper ==-->
+      <!--== End Header Wrapper ==-->
+      <div class="product-cards">
+        {% for i in contact %}
+        <div class="product-card" data-id="{{i.id}}">
+          <div class="product-image">
+            <a href="/product/{{i.id}}/">
+              <img src="{{i.img.url}}" alt="Crocs">
+            </a>
+            <div class="discount-badge">-22%</div>
+          </div>
+          <div class="product-info">
+            <a href="/product/{{i.id}}/">
+              <h3>{{i.title}}</h3>
+            </a>
+            <div class="prices">
+              <span class="new-price">{{i.discount_price}} ₽</span>
+              <span class="old-price">{{i.price}} ₽</span>
+            </div>
+            <div class="sizes">
+              Размеры в наличии: 36 37 38 39 40 41 42 43 44 45 46
+            </div>
+            <a href="/add-to-cart/{{i.id}}/">
+              <button class="quick-view-btn">добавить в корзину</button>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <style>
+        .product-cards {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: center;
+          padding: 20px;
+        }
+  
+        .product-card {
+          background: #fff;
+          border-radius: 10px;
+          width: 220px;
+          padding: 10px;
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          position: relative;
+        }
+  
+  
+  
+        .product-image {
+          position: relative;
+        }
+  
+        .product-image img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+  
+        .discount-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: black;
+          color: white;
+          padding: 5px 8px;
+          font-weight: bold;
+          font-size: 0.9rem;
+          border-radius: 3px;
+        }
+  
+        .product-info {
+          padding: 10px;
+          text-align: left;
+        }
+  
+        .product-info h3 {
+          font-size: 1rem;
+          margin: 0 0 8px 0;
+          color: #333;
+          text-decoration: none;
+        }
+  
+        .product-info a {
+          text-decoration: none;
+          color: inherit;
+        }
+  
+        .prices {
+          margin-bottom: 5px;
+        }
+  
+        .new-price {
+          color: red;
+          font-weight: bold;
+          font-size: 1.1rem;
+        }
+  
+        .old-price {
+          color: #777;
+          text-decoration: line-through;
+          margin-left: 10px;
+          font-size: 0.9rem;
+        }
+  
+        .sizes {
+          font-size: 0.70rem;
+          color: #555;
+          margin-bottom: 10px;
+        }
+  
+        .quick-view-btn {
+          background: black;
+          color: white;
+          border: none;
+          padding: 11px 17px;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+          width: 100%;
+          transition: background 0.3s ease;
+        }
+  
+        .quick-view-btn:hover {
+          background: #0056b3;
+        }
+  
+        /* Responsive */
+        @media (max-width: 600px) {
+          .product-cards {
+            justify-content: space-between;
+          }
+  
+          .product-card {
+            width: calc(50% - 10px);
+          }
+  
+          .quick-view-btn {
+            font-size: 0.5rem;
+          }
+  
+          .sizes {
+            font-size: 0.50rem
+          }
+  
+          .product-info h3 {
+            font-size: 0.8rem;
+          }
+          .quick-view-btn {
+            font-size: 0.5rem;
+            padding: 10px 7px !important;
+          }
+        }
+      </style>
+      {% for i in card%}
+      <!-- 1-chi MODAL: Mahsulot haqida -->
+      <div class="modal" id="modal">
+        </a>
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+
+          <div class="chaptomnga">
+            <img id="modalMainImage" src="{{i.img1.url}}"
+              style="width: 100%; max-width: 300px; border-radius: 10px; margin-bottom: 10px;" alt="Mahsulot rasmi">
+            <div class="thumbnail-container">
+              <img src="{{i.img2.url}}" class="thumbnail active"
+                onclick="changeImage('{{i.img1.url}}', 'Product 1 Description')">
+              <img src="{{i.img3.url}}" class="thumbnail" onclick="changeModalImage(this)">
+              <img src="{{i.img4.url}}" class="thumbnail" onclick="changeModalImage(this)">
+              <img src="{{i.img5.url}}" class="thumbnail" onclick="changeModalImage(this)">
+            </div>
+          </div>
+
+          <div class="ongtomonga">
+            <h2 style="margin-top: 15px;">Crocs Bayaband Clog Бледно-розовые</h2>
+            <span class="prise">4 650р.</span>
+            <span class="old-price">5 440р.</span>
+            <h4>Доставка:</h4>
+            <div style="display: flex; justify-content: left; align-items: center; gap: 15px;">
+              <b><label>по Москве: </label></b>
+              <input type="checkbox">
+            </div>
+            <div style="display: flex; justify-content: left; align-items: center; gap: 15px;">
+              <b> <label>по России, скидка 300 руб.: </label></b>
+              <input type="checkbox">
+            </div>
+            <label for="size-select" style="color: black;">Crocs Bayaband Clog Лавандовые </label>
+            <select id="size-select">
+              <option>37</option>
+              <option>38</option>
+              <option>39</option>
+            </select>
+
+            <button class="blue-button" onclick="openOrder()">Добавить в корзину</button>
+          </div>
+        </div>
+      </div>
+      {% endfor%}
+
+      <!-- 2-chi MODAL: Buyurtma shakli -->
+      <div class="order-form" id="orderForm">
+        <form action="/yubor/" method="POST">
+          {% csrf_token %}
+          <div class="order-form-content">
+            <span class="close-btn" onclick="closeOrder()">&times;</span>
+            <h2>Ваш заказ</h2>
+            <p>Crocs Bayaband Clog (размер: 36)</p>
+            <p>Цена: 5 030р. + Доставка: 400р. = <b style="color: green;">Итого: 5 430р.</b></p>
+
+            <label>Город доставки:</label>
+            <input type="text" name="shaxar" placeholder="Москва" class="input-style">
+
+            <label>Ваш адрес:</label>
+            <input type="text" name="yashash" placeholder="Улица, дом, квартира" class="input-style">
+
+            <label>Ваше имя:</label>
+            <input type="text" name="name" placeholder="Имя" class="input-style">
+
+            <label>Ваш телефон:</label>
+            <input type="text" name="tel" placeholder="+7..." class="input-style">
+
+
+            <button class="blue-button" onclick="openConfirmation()" style="margin-top: 20px;">Добавить в
+              корзину</button>
+          </div>
+        </form>
+      </div>
+
+
+      <!-- 3-chi MODAL: Tasdiqlash -->
+      <div class="confirmation" id="confirmation">
+        <div class="confirmation-content">
+          <span class="close-btn" onclick="closeConfirmation()">&times;</span>
+          <h2>Спасибо за заказ!</h2>
+          <p>Ваш заказ принят. Мы свяжемся с вами в ближайшее время.</p>
+          <button class="blue-button" onclick="closeConfirmation()">OK</button>
+        </div>
+      </div>
+
+      <style>
+        
+
+        /* MODAL umumiy uslublari */
+        /* MODAL umumiy dizayn */
+        .modal,
+        .order-form,
+        .confirmation {
+          display: none;
+          position: fixed;
+          z-index: 1000;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.6);
+          padding-top: 60px;
+        }
+
+        .order-form-content {
+          padding: 15px 40px !important;
+        }
+
+        /* MODAL kontentlar dizayni */
+        .modal-content,
+        .order-form-content,
+        .confirmation-content {
+          background-color: #fff;
+          margin: auto;
+          padding: 30px;
+          border-radius: 10px;
+          width: 90%;
+          max-width: 400px;
+          position: relative;
+          animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Yopish tugmasi */
+        .close-btn {
+          position: absolute;
+          right: 15px;
+          top: 0px !important;
+          font-size: 44px !important;
+          cursor: pointer;
+          color: red !important;
+        }
+
+        /* Tugmalar */
+        .blue-button {
+          display: inline-block;
+          background-color: #007bff;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 1rem;
+        }
+
+        .blue-button:hover {
+          background-color: #0056b3;
+        }
+
+        /* Input dizayni */
+        .input-style {
+          width: 100%;
+          padding: 12px 15px;
+          margin: 8px 0 20px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          background-color: #f9f9f9;
+        }
+
+        /* Hover effect */
+        .input-style:hover {
+          border-color: #a0a0a0;
+          background-color: #fff;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Focus effect */
+        .input-style:focus {
+          border-color: #2b52ff;
+          background-color: #fff;
+          box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+          outline: none;
+        }
+
+        /* Active state */
+        .input-style:active {
+          border-color: #1a43fa;
+        }
+
+        /* Placeholder styling */
+
+
+        /* Disabled state */
+
+        /* Thumbnail galereya */
+        .thumbnail-container {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .thumbnail {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 6px;
+          border: 2px solid transparent;
+          cursor: pointer;
+          transition: 0.2s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+          border-color: #007bff;
+        }
+
+      
+
+        /* Animation */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      </style>
+      <script>
+        // 1-MODAL: Быстрый просмотр tugmasi
+        const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+        const modal = document.getElementById('modal');
+
+        quickViewButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            modal.style.display = 'block';
+          });
+        });
+
+        function closeModal() {
+          modal.style.display = 'none';
+        }
+
+        // 2-MODAL: "Добавить в корзину" (modal ichidagi)
+        const orderForm = document.getElementById('orderForm');
+
+        function openOrder() {
+          modal.style.display = 'none';
+          orderForm.style.display = 'block';
+        }
+
+        function closeOrder() {
+          orderForm.style.display = 'none';
+        }
+
+        // 3-MODAL: "Добавить в корзину" (order form ichidagi)
+        const confirmation = document.getElementById('confirmation');
+
+        function openConfirmation() {
+          orderForm.style.display = 'none';
+          confirmation.style.display = 'block';
+        }
+
+        function closeConfirmation() {
+          confirmation.style.display = 'none';
+        }
+
+        // Extra: Escape bosilganda ham modallar yopiladi
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            closeModal();
+            closeOrder();
+            closeConfirmation();
+          }
+        });
+      </script>
+     
+{% endblock %}

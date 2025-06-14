@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!--== End Header Wrapper ==-->
+<!-- Offcanvas aside - Telefon versiyasi uchun -->
+<div class="page-header-area">
+  <div class="container pt--0 pb--0">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-header-content">
+          <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+            <ul class="breadcrumb" style="gap: 10px !important;">
+              <li><a href="/" style="color: black !important;">Главная</a></li>
+              <li class="breadcrumb-sep"></li>
+              <li>
+                О компании </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Page Header Area Wrapper ==-->
+<!--== End Header Wrapper ==-->
+<div class="containe88">
+  <h1>Звезды</h1>
+  <div class="stars-grid">
+    {% for i in zvezdi %}
+    <div class="star-card">
+      <img src="{{i.img.url}}" alt="Шайа Лабаф" />
+      <div class="star-name">{{i.name}}</div>
+    </div>
+    {% endfor %}
+    <!-- Qo‘shimcha mashhurlarni shu yerga qo‘shing -->
+  </div>
+</div>
+<style>
+  .containe88 {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+    color: #111;
+  }
+
+  .containe88 h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .stars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .star-card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .star-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .star-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .star-name {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .containe88 h1 {
+      font-size: 28px;
+    }
+
+    .star-name {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stars-grid {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+
+    .star-name {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+</style>
+<!-- end -->
+{% endblock %}

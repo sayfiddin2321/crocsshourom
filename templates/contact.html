@@ -1,0 +1,145 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!--wrapper start-->
+<div class="wrapper">
+
+
+
+  <main class="main-content">
+    <!--== Start Page Header Area Wrapper ==-->
+    <div class="page-header-area">
+      <div class="container pt--0 pb--0">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-header-content">
+              <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+                <ul class="breadcrumb">
+                  <li><a href="/" style="color: black;">Главная</a></li>
+                  <li class="breadcrumb-sep">//</li>
+                  <li>Сообщение </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--== End Page Header Area Wrapper ==-->
+
+    <!--== Start Contact Area Wrapper ==-->
+    <section class="contact-area contact-page-area">
+      <div class="container">
+        <div class="row contact-page-wrapper">
+          <div class="col-xl-9">
+            <div class="contact-form-wrap" data-aos="fade-right">
+              <div class="contact-form-title">
+                <h2 class="title">Мы здесь! <br>Пожалуйста, отправьте квест</h2>
+              </div>
+              <!--== Start Contact Form ==-->
+              <div class="contact-form">
+                <form method="POST" action="/message/">
+                  {% csrf_token %}
+                  <div class="row row-gutter-20">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Имя:  *">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Электронная почта: *">
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <input class="form-control" type="text" name="mavzu" placeholder="Тема (необязательно): ">
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb--0">
+                        <textarea class="form-control" name="text" placeholder="Сообщение:   "></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb--0">
+                        <button class="btn-theme" type="submit">Отправить сообщение</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!--== End Contact Form ==-->
+
+              <!--== Message Notification ==-->
+              <div class="form-message"></div>
+              <div class="shape-group-style2">
+                <div class="shape-group-one"><img src="{% static 'assets/img/shape/13.webp' %}" width="193" height="168"
+                    alt="Image-HasTech"></div>
+                <div class="shape-group-two"><img src="{% static 'assets/img/shape/15.webp' %}" width="221" height="113"
+                    alt="Image-HasTech"></div>
+                <div class="shape-group-three"><img src="{% static 'assets/img/shape/16.webp' %}" width="129"
+                    height="147" alt="Image-HasTech"></div>
+                <div class="shape-group-four"><img src="{% static 'assets/img/shape/17.webp' %}" width="493"
+                    height="340" alt="Image-HasTech"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3">
+            <div class="contact-info-wrap">
+              <div class="contact-info">
+                <div class="row">
+                  <div class="col-lg-4 col-xl-12">
+                    <div class="info-item" data-aos="fade-left">
+                      <div class="icon">
+                        <img src="{% static 'assets/img/icons/c1.webp' %}" width="69" height="65" alt="Image-HasTech">
+                      </div>
+                      <div class="info">
+                        <h5 class="title">Адрес</h5>
+                        <p>Ваш адрес будет здесь. 123 Ваше местоположение</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-xl-12">
+                    <div class="info-item" data-aos="fade-left" data-aos-delay="60">
+                      <div class="icon">
+                        <img src="{% static 'assets/img/icons/c2.webp' %}" width="65" height="65" alt="Image-HasTech">
+                      </div>
+                      <div class="info">
+                        <h5 class="title">Номер телефона</h5>
+                        <p>
+                          <a href="tel://+998 99 999 99 99">+998 99 999 99 99</a><br>
+                          <a href="tel://+998 99 909 99 09">+998 99 909 09 99</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-xl-12">
+                    <div class="info-item" data-aos="fade-left" data-aos-delay="120">
+                      <div class="icon">
+                        <img src="{% static 'assets/img/icons/c3.webp' %}" width="65" height="65" alt="Image-HasTech">
+                      </div>
+                      <div class="info">
+                        <h5 class="title">Электронная почта </h5>
+                        <p>
+                          <a href="mailto://crocs.com@gmail.com">crocs.com@gmail.com</a><br>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== End Contact Area Wrapper ==-->
+  </main>
+
+</div>
+
+
+{% endblock %}

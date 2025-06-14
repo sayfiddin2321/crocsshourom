@@ -1,0 +1,507 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!--wrapper start-->
+<div class="wrapper">
+
+
+
+
+
+  <main class="main-content">
+    <!--== Start Hero Area Wrapper ==-->
+    <section class="home-slider-area">
+      <div class="swiper-container home-slider-container default-slider-container">
+        <div class="swiper-wrapper home-slider-wrapper slider-default">
+          {% for i in index_home %}
+          <div class="slideu" style="width: 200%;">
+            <img src="{{i.background_img.url}}">
+          </div>
+          <style>
+            .slideu {
+              width: 100vw;
+              height: 65vh;
+              overflow: hidden;
+              position: relative;
+            }
+
+            .slideu img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+
+            /* Mobil qurilmalar uchun */
+            @media (max-width: 768px) {
+              .slideu {
+                height: 30vh;
+                /* Kichik ekranlarda biroz kichikroq */
+              }
+            }
+
+            /* Juda kichik ekranlar (telefonlar) uchun */
+            @media (max-width: 480px) {
+              .slideu {
+                height: 30vh;
+              }
+            }
+          </style>
+
+          {% endfor %}
+        </div>
+        <!--== Add Swiper Arrows ==-->
+      </div>
+    </section>
+    <!-- slider start -->
+
+
+    <!-- slider end -->
+    <!--== End Hero Area Wrapper ==-->
+
+    <div class="crocs-cards">
+      {% for i in small_card %}
+      <div class="card women">
+        <img src="{{i.img.url}}" alt="Женские Crocs" class="rasm00">
+        <style>
+          @media (max-width: 768px) {
+            .rasm00 {
+              height: 300px !important;
+              width: 250px;
+            }
+
+            .crocs-cards {
+              padding: 0px !important;
+            }
+          }
+        </style>
+        <a href="/categories/{{i.id}}/"><button>{{i.title}}</button></a>
+      </div>
+
+      {% endfor %}
+      {% comment %} small card style start {% endcomment %}
+    </div>
+
+
+
+
+
+    <div class="product-cards">
+      {% for i in card%}
+      <div class="product-card" data-id="{{i.id}}">
+        <div class="product-image">
+          <a href="/product/{{i.id}}/">
+            <img src="{{i.img.url}}" alt="Crocs">
+          </a>
+          <div class="discount-badge">-22%</div>
+        </div>
+        <div class="product-info">
+          <a href="/product/{{i.id}}/">
+            <h3>{{i.title}}</h3>
+          </a>
+          <div class="prices">
+            <span class="new-price">{{i.discount_price}} ₽</span>
+            <span class="old-price">{{i.price}} ₽</span>
+          </div>
+          <div class="sizes">
+            Размеры в наличии: 36 37 38 39 40 41 42 43 44 45 46
+          </div>
+          <a href="/add-to-cart/{{i.id}}/">
+            <button class="quick-view-btn">добавить в корзину</button>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <style>
+      .product-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .product-card {
+        background: #fff;
+        border-radius: 10px;
+        width: 220px;
+        padding: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+
+
+      .product-image {
+        position: relative;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .discount-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: black;
+        color: white;
+        padding: 5px 8px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        border-radius: 3px;
+      }
+
+      .product-info {
+        padding: 10px;
+        text-align: left;
+      }
+
+      .product-info h3 {
+        font-size: 1rem;
+        margin: 0 0 8px 0;
+        color: #333;
+        text-decoration: none;
+      }
+
+      .product-info a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .prices {
+        margin-bottom: 5px;
+      }
+
+      .new-price {
+        color: red;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .old-price {
+        color: #777;
+        text-decoration: line-through;
+        margin-left: 10px;
+        font-size: 0.9rem;
+      }
+
+      .sizes {
+        font-size: 0.70rem;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .quick-view-btn {
+        background: black;
+        color: white;
+        border: none;
+        padding: 11px 17px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.3s ease;
+      }
+
+      .quick-view-btn:hover {
+        background: #0056b3;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .product-cards {
+          justify-content: space-between;
+        }
+
+        .product-card {
+          width: calc(50% - 10px);
+        }
+
+        .quick-view-btn {
+          font-size: 0.5rem;
+        }
+
+        .sizes {
+          font-size: 0.50rem
+        }
+
+        .product-info h3 {
+          font-size: 0.8rem;
+        }
+        .quick-view-btn {
+          font-size: 0.5rem;
+          padding: 10px 7px !important;
+        }
+      }
+    </style>
+
+    <!-- 2-chi MODAL: Buyurtma shakli -->
+
+
+
+
+
+    <script>
+      // 1-MODAL: Быстрый просмотр tugmasi
+      const quickViewButtons = document.querySelectorAll('.quick-view-btn');
+      const modal = document.getElementById('modal');
+
+      quickViewButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          modal.style.display = 'block';
+        });
+      });
+
+      function closeModal() {
+        modal.style.display = 'none';
+      }
+
+
+
+
+
+      // Extra: Escape bosilganda ham modallar yopiladi
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeModal();
+          closeOrder();
+          closeConfirmation();
+        }
+      });
+    </script>
+
+    <!--== Start Blog Area Wrapper ==-->
+
+    <section class="blog-area blog-default-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title text-center">
+              <h3 class="title">Новые продукты</h3>
+              <div class="desc">
+                <!-- <p>There are many variations of passages of Lorem Ipsum available</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          {% for i in news%}
+          <div class="col-md-6 col-lg-4">
+            <!--== Start Blog Item ==-->
+            <div class="post-item">
+              <div class="inner-content">
+                <div class="thumb">
+                  <a href="#"><img src="{{i.img.url}}" width="370" height="260" alt="Image-HasTech"></a>
+                </div>
+                <div class="content">
+                  <div class="meta-post">
+                    <ul>
+                      <li class="post-date"><i class="fa fa-calendar"></i><a href="/blog/">{{i.sana}}</a></li>
+                    </ul>
+                  </div>
+                  <h4 class="title"><a href="blog-details.html">{{i.title}}</a>
+                  </h4>
+                  <p>{{i.text}}</p>
+                  <a class="post-btn" href="/blog/">Подробно</a>
+                </div>
+              </div>
+            </div>
+            <!--== End Blog Item ==-->
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+  </main>
+  <section class="crocs-about">
+    <div class="text-column">
+      <h2>Интернет-магазин обуви Crocs</h2>
+      <p>
+        В ассортименте торговой марки представлена высококачественная, надежная и оригинальная обувь для мужчин и
+        женщин. Здесь Вы найдете модные сабо, шлепанцы, сандалии и другие модели. Клиенты с удовольствием носят
+        удобные кроксы. Такая обувь хорошо сочетается с различной одеждой, особенно с летними нарядами. С ней можно
+        составлять интересные луки. Выгоднее всего купить Crocs в интернет-магазине. Широкий выбор моделей доступен на
+        нашем сайте.
+      </p>
+    </div>
+    <div class="images-column">
+      <div class="polaroid rotate-left">
+        <img src="{{imagesrk.img1.url}}" alt="Crocs 1">
+      </div>
+      <div class="polaroid rotate-center">
+        <img src="{{imagesrk.img2.url}}" alt="Crocs 2">
+      </div>
+      <div class="polaroid rotate-right">
+        <img src="{{imagesrk.img3.url}}" alt="Crocs 3">
+      </div>
+    </div>
+  </section>
+  <section class="crocs-about">
+    <div class="text-column">
+      <h2>Об обуви Crocs</h2>
+      <p>
+        Компания, производящая кроксы, появилась относительно недавно, в 2002 году. Несмотря на молодой возраст
+        производителя, его продукция известна по всему миру.
+        <br><br>
+        Интересно, что изначально модели были рассчитаны на людей, занимающихся яхтингом и парусным спотом. Ведь они,
+        как никто другой, нуждаются в обуви, которая не скользит на мокром полу. Однако со временем целевая аудитория
+        бренда расширилась.
+        <br><br>
+        Сейчас люди разных возрастов и профессий с удовольствием носят шлепанцы и другие модели этого бренда благодаря
+        их удобству, необычному внешнему виду и отличным эксплуатационным характеристикам. Особенно данные модели
+        предпочитают те, кто по роду деятельности много времени проводит на ногах. Например, в некоторых местах в США
+        сабо даже входят в униформу врачей.
+        <br><br>
+        Секрет успеха производителя кроется в особом материале. Шлепанцы изготавливаются из специального полимера
+        Крослайт. Он не впитывает воду, а кроме того, обладает антибактериальными свойствами. За счет этого во время
+        носки не проявляется неприятный запах.
+        <br><br>
+        Сегодня возможность купить кроксы в интернет-магазине в Москве есть у любого желающего. Для этого достаточно
+        оформить заказ на нашем сайте с удобной доставкой по столице или в свой населенный пункт.
+      </p>
+      <h2>Преимущества изделий</h2>
+      <p>Рассмотрим, какими преимуществами обладают модели данного бренда:
+        <br><br>
+        • Оригинальный дизайн. Кому-то ботинки могут показаться слишком простыми, но в этом и заключается их
+        особенность. Они не похожи на другие модели. Хорошо сочетаются с повседневной летней одеждой и вещами
+        спортивного кроя.
+      </p>
+    </div>
+    <div class="text-column">
+      <p>
+        • Водонепроницаемость. Конструкция изделий изготовлена из особого материала, который не впитывает влагу.
+        Благодаря этому данную обувь можно носить на море, надевать на даче.
+        <br><br>
+        • Комфортные ощущения при ходьбе. Это преимущество обусловлено анатомически правильной конструкцией обуви,
+        наличием мягкой подошвы, а также прочими решениями. Со временем изделия подстраиваются под форму стопы.
+        <br><br>
+        • Высокое качество исполнения каждой модели. В оригинальной обуви Вы не встретите огрехов производства, ведь
+        ее качество строго контролируется на фабриках, принадлежащих компании.
+      </p>
+      <h2>Почему стоит покупать обувь у нас?</h2>
+      <p>Приобретать обувь в нашем интернет-магазине выгодно по ряду причин:
+        <br><br>
+        • Удобный формат. Интернет-магазин работает круглосуточно, приобрести обувные изделия Вы можете в любое
+        удобное для себя время. Нет необходимости ходить по магазинам и стоять в очередях – весь каталог в удобном
+        формате представлен на сайте.
+        <br><br>
+        • Доставка. Мы осуществляем доставку изделий как в пределах Москвы, так и в другие населенные пункты. Таким
+        образом, Вы можете получить нужную пару без лишних усилий. С условиями доставки можно ознакомиться на нашем
+        сайте.
+        <br><br>
+        • Выгода. На нашем сайте регулярно проходят акции и распродажи, благодаря которым можно приобрести по
+        доступной стоимости желаемые модели, за счет чего хорошо сэкономить.
+        <br><br>
+        • Помощь. Консультанты готовы помочь с выбором оптимальной модели, в соответствии с пожеланиями и бюджетом
+        клиента. Связаться с нами можно, позвонив по контактному номеру, указанному на нашем сайте.
+        <br><br>
+        Фирменные изделия бренда Crocs будут Вас радовать своим внешним видом и отличными эксплуатационными
+        характеристиками на протяжении длительного времени.
+      </p>
+    </div>
+  </section><br><br><br>
+  <style>
+    .crocs-about {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 0px 80px;
+      background-color: #fff;
+      flex-wrap: wrap;
+    }
+
+    .text-column {
+      flex: 1;
+      min-width: 300px;
+      max-width: 55%;
+    }
+
+    .text-column h2 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .text-column p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #222;
+    }
+
+    .images-column {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .polaroid {
+      position: absolute;
+      background-color: #fdf5e6;
+      padding: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      width: 300px;
+    }
+
+    .polaroid img {
+      width: 100%;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* Har birining pozitsiyasi */
+    .rotate-left {
+      top: 30px;
+      left: 0;
+      transform: rotate(-10deg);
+      z-index: 1;
+    }
+
+    .rotate-center {
+      top: 50px;
+      left: 130px;
+      transform: rotate(5deg);
+      z-index: 3;
+    }
+
+    .rotate-right {
+      top: -10px;
+      left: 230px;
+      transform: rotate(10deg);
+      z-index: 2;
+    }
+
+    /* Responsivlik */
+    @media (max-width: 768px) {
+      .images-column {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .crocs-about {
+        padding: 0px 55px !important;
+      }
+
+      .polaroid {
+        position: static;
+        transform: none !important;
+        margin: 10px 0;
+      }
+    }
+  </style>
+
+  {% endblock %}

@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!--== End Header Wrapper ==-->
+<!-- Offcanvas aside - Telefon versiyasi uchun -->
+<div class="page-header-area">
+  <div class="container pt--0 pb--0">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-header-content">
+          <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+            <ul class="breadcrumb" style="gap: 10px !important;">
+              <li><a href="/" style="color: black !important;">Главная</a></li>
+              <li class="breadcrumb-sep"></li>
+              <li>
+                О компании </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Page Header Area Wrapper ==-->
+<!--== End Header Wrapper ==-->
+<div class="container55">
+
+  <h1>Образы</h1>
+  <div class="main-content">
+    <!-- Left -->
+    <div class="left-column">
+      <h3>Популярные образы</h3>
+
+      <div class="popular-item">
+        <img src="{{imagess.img_2.url}}" alt="">
+        <div class="popular-info">
+          <span>Сабо Crocs Classic Белые</span>
+          <span>❤️ <span class="likes">482</span></span>
+        </div>
+      </div>
+
+      <div class="popular-item">
+        <img src="{{imagess.img_3.url}}" alt="">
+        <div class="popular-info">
+          <span>Crocs Classic Platform Clog Белые</span>
+          <span>❤️ <span class="likes">52</span></span>
+        </div>
+      </div>
+
+      <div class="popular-item">
+        <img src="{{imagess.img_4.url}}" alt="">
+        <div class="popular-info">
+          <span>Сабо Crocs Crocband Голубые</span>
+          <span>❤️ <span class="likes">318</span></span>
+        </div>
+      </div>
+
+      <button class="show-more">Показать еще</button>
+    </div>
+
+    <!-- Right -->
+    <div class="right-column">
+      <div class="image-box">
+        <img src="{{imagess.img_1.url}}" alt="">
+        <div class="image-caption">
+          Crocs Classic Crush Clog Mint Мятные
+          <div class="likes">❤️ 14</div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button>❤️ Нравится</button>
+        <button>👎 Не нравится</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .container55 {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .breadcrumb {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .breadcrumb a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .container55 h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .left-column {
+    flex: 1 1 300px;
+  }
+
+  .popular-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .popular-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  .popular-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popular-info span {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  .popular-info .likes {
+    color: red;
+    margin-left: 5px;
+    font-size: 13px;
+  }
+
+  .show-more {
+    padding: 10px 20px;
+    border: 1px solid #111;
+    background: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .right-column {
+    flex: 1 1 600px;
+    position: relative;
+  }
+
+  .image-box {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .image-box img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+  }
+
+  .image-caption {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .image-caption .likes {
+    font-size: 14px;
+    color: #fff;
+    font-weight: normal;
+  }
+
+  .container55 .buttons {
+    position: absolute;
+    top: 50%;
+    right: -140px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .container55 .buttons button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 28px;
+    font-size: 16px;
+    border-radius: 30px;
+    border: 2px solid black;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .buttons button:hover {
+    background-color: #f5f5f5;
+  }
+
+  @media (max-width: 992px) {
+    .main-content {
+      flex-direction: column;
+    }
+
+    .buttons {
+      position: static;
+      transform: none;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+</style>
+<!-- end -->
+{% endblock %}
