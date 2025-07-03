@@ -80,13 +80,14 @@ def add_to_cart(request, product_id):
 
     return redirect('cart_detail')
 
+
 def cart_detail(request):
-  
     session_key = request.session.session_key
     if not session_key:
         request.session.create()
 
     order = Order.objects.filter(session_key=session_key, is_ordered=False).first()
+
     if not order:
         items = []
         total = 0
@@ -94,7 +95,12 @@ def cart_detail(request):
         items = order.items.all()
         total = order.get_total()
 
-    return render(request, 'shop-card.html', {'items': items, 'total': total,"order":OrderItem.objects.all(),"categories":Category.objects.all()})
+    return render(request, 'shop-card.html', {
+        'items': items,
+        'total': total,
+        'order': order,  # faqat shu foydalanuvchining `order`i uzatilmoqda
+        'categories': Category.objects.all()
+    })
 
 def checkout(request):
     session_key = request.session.session_key

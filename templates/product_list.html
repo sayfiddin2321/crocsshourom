@@ -29,7 +29,7 @@
             <a href="/product/{{i.id}}/">
               <img src="{{i.img.url}}" alt="Crocs">
             </a>
-            <div class="discount-badge">-22%</div>
+            <div class="discount-badge">{{i.discount_percent}}%</div>
           </div>
           <div class="product-info">
             <a href="/product/{{i.id}}/">
@@ -83,17 +83,17 @@
         .discount-badge {
           position: absolute;
           top: 10px;
-          right: 10px;
+          right: -10px;
           background: black;
           color: white;
-          padding: 5px 8px;
+          padding: 4px 8px;
           font-weight: bold;
-          font-size: 0.9rem;
+          font-size: 0.8rem;
           border-radius: 3px;
         }
   
         .product-info {
-          padding: 10px;
+          padding: 7px;
           text-align: left;
         }
   
@@ -160,7 +160,7 @@
           }
   
           .quick-view-btn {
-            font-size: 0.5rem;
+            font-size: 0.6rem;
           }
   
           .sizes {
@@ -171,8 +171,8 @@
             font-size: 0.8rem;
           }
           .quick-view-btn {
-            font-size: 0.5rem;
-            padding: 10px 7px !important;
+            font-size: 0.6rem;
+            padding: 7px 10px !important;
           }
         }
       </style>
@@ -193,29 +193,6 @@
               <img src="{{i.img4.url}}" class="thumbnail" onclick="changeModalImage(this)">
               <img src="{{i.img5.url}}" class="thumbnail" onclick="changeModalImage(this)">
             </div>
-          </div>
-
-          <div class="ongtomonga">
-            <h2 style="margin-top: 15px;">Crocs Bayaband Clog Бледно-розовые</h2>
-            <span class="prise">4 650р.</span>
-            <span class="old-price">5 440р.</span>
-            <h4>Доставка:</h4>
-            <div style="display: flex; justify-content: left; align-items: center; gap: 15px;">
-              <b><label>по Москве: </label></b>
-              <input type="checkbox">
-            </div>
-            <div style="display: flex; justify-content: left; align-items: center; gap: 15px;">
-              <b> <label>по России, скидка 300 руб.: </label></b>
-              <input type="checkbox">
-            </div>
-            <label for="size-select" style="color: black;">Crocs Bayaband Clog Лавандовые </label>
-            <select id="size-select">
-              <option>37</option>
-              <option>38</option>
-              <option>39</option>
-            </select>
-
-            <button class="blue-button" onclick="openOrder()">Добавить в корзину</button>
           </div>
         </div>
       </div>

@@ -55,8 +55,83 @@
       </div>
     </section>
     <!-- slider start -->
-
-
+    <!-- Font Awesome ulanishi -->
+    <div class="benefits-container">
+      <div class="benefit-item">
+        <i class="fas fa-shoe-prints"></i>
+        <p>Привезем до 4 пар на выбор</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-stopwatch"></i>
+        <p>Доставка по Москве в течение 2 часов</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-calendar-day"></i>
+        <p>Возврат и обмен без проблем</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-certificate"></i>
+        <p>Обувь оригинального качества</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-shield-alt"></i>
+        <p>Гарантия 3 месяца</p>
+      </div>
+    </div>
+    <style>
+      .benefits-container {
+        display: flex;
+        margin-top: 10px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px 40px;
+        gap: 20px;
+        text-align: center;
+      }
+    
+      .benefit-item {
+        flex: 1 1 18%;
+        min-width: 150px;
+      }
+    
+      .benefit-item i {
+        font-size: 32px;
+        color: #000;
+        margin-bottom: 10px;
+      }
+    
+      .benefit-item p {
+        font-size: 14px;
+        color: #222;
+        margin: 0;
+        font-weight: bold; /* ✅ So'zlarni qalin qilish */
+      }
+    
+      /* ✅ Mobil uchun 2 ustunli dizayn */
+      @media (max-width: 768px) {
+        .benefits-container {
+          display: grid;
+          margin-top: 20px;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px 10px;
+          justify-content: center;
+          padding: 20px 10px;
+        }
+    
+        .benefit-item {
+          width: 100%;
+          margin-bottom: 0;
+        }
+    
+        /* Oxirgi elementni markazga joylashtirish */
+        .benefit-item:nth-child(5) {
+          grid-column: 1 / -1;
+          justify-self: center;
+        }
+      }
+    </style>
+    
     <!-- slider end -->
     <!--== End Hero Area Wrapper ==-->
 
@@ -94,7 +169,7 @@
           <a href="/product/{{i.id}}/">
             <img src="{{i.img.url}}" alt="Crocs">
           </a>
-          <div class="discount-badge">-22%</div>
+          <div class="discount-badge">{{i.discount_percent}}%</div>
         </div>
         <div class="product-info">
           <a href="/product/{{i.id}}/">
@@ -148,17 +223,17 @@
       .discount-badge {
         position: absolute;
         top: 10px;
-        right: 10px;
+        right: -10px;
         background: black;
         color: white;
-        padding: 5px 8px;
+        padding: 4px 8px;
         font-weight: bold;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         border-radius: 3px;
       }
 
       .product-info {
-        padding: 10px;
+        padding: 7px;
         text-align: left;
       }
 
@@ -235,9 +310,10 @@
         .product-info h3 {
           font-size: 0.8rem;
         }
+
         .quick-view-btn {
-          font-size: 0.5rem;
-          padding: 10px 7px !important;
+          font-size: 0.6rem;
+          padding: 8px 10px !important;
         }
       }
     </style>
@@ -334,12 +410,15 @@
     </div>
     <div class="images-column">
       <div class="polaroid rotate-left">
+        <h3>{{imagesrk.name1}}</h3>
         <img src="{{imagesrk.img1.url}}" alt="Crocs 1">
       </div>
       <div class="polaroid rotate-center">
+        <h3>{{imagesrk.name2}}</h3>
         <img src="{{imagesrk.img2.url}}" alt="Crocs 2">
       </div>
       <div class="polaroid rotate-right">
+        <h3>{{imagesrk.name3}}</h3>
         <img src="{{imagesrk.img3.url}}" alt="Crocs 3">
       </div>
     </div>
@@ -493,7 +572,7 @@
       }
 
       .crocs-about {
-        padding: 0px 55px !important;
+        padding: 0px 35px !important;
       }
 
       .polaroid {
