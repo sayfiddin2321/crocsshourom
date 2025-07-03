@@ -8,8 +8,6 @@
 
 
 
-
-
   <main class="main-content">
     <!--== Start Hero Area Wrapper ==-->
     <section class="home-slider-area">
@@ -54,6 +52,10 @@
         <!--== Add Swiper Arrows ==-->
       </div>
     </section>
+
+    <div class="jibbitz-banner">
+      <p>ФИРМЕННЫЕ УКРАШЕНИЯ ДЖИББИТСЫ <span style="color: grey;">КАЖДОМУ КЛИЕНТУ!</span></p>
+    </div>
     <!-- slider start -->
     <!-- Font Awesome ulanishi -->
     <div class="benefits-container">
@@ -107,6 +109,17 @@
         margin: 0;
         font-weight: bold; /* ✅ So'zlarni qalin qilish */
       }
+
+      .jibbitz-banner {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
     
       /* ✅ Mobil uchun 2 ustunli dizayn */
       @media (max-width: 768px) {
@@ -117,6 +130,11 @@
           gap: 30px 10px;
           justify-content: center;
           padding: 20px 10px;
+        }
+
+        .jibbitz-banner {
+          font-size: 1.4rem;
+          padding: 16px 8px;
         }
     
         .benefit-item {
@@ -129,6 +147,12 @@
           grid-column: 1 / -1;
           justify-self: center;
         }
+
+        @media (max-width: 480px) {
+          .jibbitz-banner {
+            font-size: 0.8rem;
+            padding: 12px 6px;
+          }
       }
     </style>
     
