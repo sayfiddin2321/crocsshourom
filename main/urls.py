@@ -29,5 +29,9 @@ urlpatterns=[
     path('cart/decrease/<int:order_id>/', views.decrease_quantity, name='decrease_quantity'),
     path('categories/', views.category_list, name='category_list'),
     path('categories/<int:category_id>/', views.contact_list_by_category, name='contact_list_by_category'),
+    
+    path('admin-orders/', views.zakazlar_admin, name='admin_orders'),
+    path('delete-order/<int:zakaz_id>/', views.delete_order, name='delete_order'),
+
 
 ]

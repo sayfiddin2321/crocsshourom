@@ -125,19 +125,39 @@ def Send(request):
         return redirect('/message/')
 
     return render(request, 'contact.html')
+
+
 def Go(request):
     if request.method == 'POST':
-        shaxar =request.POST['shaxar']
+        shaxar = request.POST['shaxar']
         yashash = request.POST['yashash']
         name = request.POST['name']
-        tel= request.POST['tel']
-        razmer=request.POST['razmer']
-        Yubor.objects.create(shaxar=shaxar, yashash=yashash,name=name,tel=tel,razmer=razmer)
+        tel = request.POST['tel']
+        razmer = request.POST.get('razmer', '')
 
-        # Bu yerda SMS jo‘natish funksiyasi bo‘lishi mumkin (tashqi servis orqali)
-        return redirect('/')
+        session_key = request.session.session_key
+        if not session_key:
+            request.session.create()
+
+        order = Order.objects.filter(session_key=session_key, is_ordered=False).first()
+        if order:
+            order.is_ordered = True
+            order.save()
+
+            Yubor.objects.create(
+                shaxar=shaxar,
+                yashash=yashash,
+                name=name,
+                tel=tel,
+                razmer=razmer,
+                order=order
+            )
+            return redirect('/')  # yoki "rahmat" sahifasi
+        else:
+            return redirect('/cart/')  # savatcha bo‘sh bo‘lsa
 
     return render(request, 'index.html')
+
 
 
 def List(request):
@@ -281,3 +301,18 @@ def Base(request):
         'categories':Category.objects.all()
     }
     return render(request,'base.html',context)
+
+
+from django.contrib.admin.views.decorators import staff_member_required
+
+@staff_member_required
+def zakazlar_admin(request):
+    zakazlar = Yubor.objects.select_related('order').all().order_by('-id')
+    return render(request, 'admin_orders.html', {'zakazlar': zakazlar})
+    
+def delete_order(request, zakaz_id):
+    zakaz = get_object_or_404(Yubor, id=zakaz_id)
+    if zakaz.order:
+        zakaz.order.delete()
+    zakaz.delete()
+    return redirect('admin_orders')

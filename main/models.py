@@ -130,14 +130,20 @@ class Message(models.Model):
     text=models.TextField()
     def __str__(self):
         return self.name
+
+
 class Yubor(models.Model):
-    shaxar=models.CharField(max_length=200)
-    yashash=models.CharField(max_length=200)
-    name=models.CharField(max_length=200)
-    tel=models.IntegerField()
-    razmer=models.IntegerField()
+    shaxar = models.CharField(max_length=200)
+    yashash = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    tel = models.CharField(max_length=20)  # Integer emas, chunki raqamlar 0 bilan boshlanishi mumkin
+    razmer = models.CharField(max_length=50, null=True, blank=True)  # Optional
+
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='yubor_info')
+
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.shaxar}"
+
 
     
 class About_2(models.Model):

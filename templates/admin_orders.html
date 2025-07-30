@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Заказы</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3, .card h4 {
+      margin: 0 0 10px;
+    }
+
+    .product {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .product img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .info {
+      font-size: 14px;
+    }
+
+    .total {
+      font-weight: bold;
+      color: #2d3748;
+      margin-top: 10px;
+    }
+
+    .delete-form {
+      margin-top: 10px;
+    }
+
+    .delete-form button {
+      background-color: #771111;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-form button:hover {
+      background-color: #671212;
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .product img {
+        width: 100%;
+        height: auto;
+      }
+
+      .delete-form button {
+        width: 100%;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Заказы</h1>
+
+  {% for zakaz in zakazlar %}
+    <div class="card">
+      <h3>👤 {{ zakaz.yashash }}</h3>
+      <h4>📞 {{ zakaz.tel }}</h4>
+      <p class="info">📍 {{ zakaz.shaxar }}, {{ zakaz.name }}</p>
+
+      <hr>
+
+      {% for item in zakaz.order.items.all %}
+        <div class="product">
+          <img src="{{ item.product.img.url }}" alt="{{ item.product.title }}">
+          <div>
+            <strong>{{ item.product.title }}</strong><br>
+            Цена: {{ item.product.discount_price }} руб<br>
+            Количество: {{ item.quantity }} шт<br>
+            Размер: {{zakaz.razmer}} <br>
+            Общая: {{ item.total_price }} руб
+          </div>
+        </div>
+      {% endfor %}
+
+      <p class="total">Итоговая: {{ zakaz.order.get_total }} руб</p>
+
+      <!-- Delete form -->
+      <form method="post" action="{% url 'delete_order' zakaz.id %}" class="delete-form">
+        {% csrf_token %}
+        <button type="submit">🗑 Zakazni o'chirish</button>
+      </form>
+    </div>
+  {% empty %}
+    <p>Заказов пока нет.</p>
+  {% endfor %}
+
+</body>
+</html>
